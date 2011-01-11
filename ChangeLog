@@ -1,0 +1,113 @@
+2011-01-17  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version): bumped to 0.1.0 for first CRAN upload
+
+2011-01-13  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/zzz.R: added print and format methods
+	* man/bdt.Rd: documented print and format methods
+	* demo/RcppBDT.R: simplied thanks to format method
+
+2011-01-12  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/zzz.R (.onLoad): import module, construct from class 'date'
+	* demo/RcppBDT.R: adjusted accordingly
+
+	* R/constants.R: define date constants here and not in zzz.R
+
+	* cleanup: added simple cleanup script
+
+2011-01-11  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version): bumped version to 0.0.3
+
+	* R/zzz.R: change initialization after borrowing a better approach
+	from John's wls package in the Rcpp repo on R-Forge: now 'bdt' is
+	the default instance of the reference class, and the module code is
+	available via 'bdtMod'
+
+2011-01-08  Dirk Eddelbuettel  <edd@debian.org>
+
+	* man/RcppBDT-package.Rd: updated
+	* man/dateFunctions.Rd: added documentation on functions
+	* man/constants.Rd: added documentation on constants defined
+	* man/bdtEnv.Rd: added documentation for bdtEnv variable
+
+	* src/RcppBDT.cpp: Added two new functions for date of first and last
+	weekday in a given month and year (eg first Friday in Jan 2011)
+
+	* R/zzz.R:
+	  - defined a number of constants: Sun, Mon, Tue, ... , Sat as well
+  	    as Jan, Feb, ..., Dec and first, second, ..., fifth
+	  - added some documentation on enviroment
+
+	* R/bdt.R:
+	  - added function to export core object for access
+	  - changed functions to access core object via per-pack. environment
+	  - added functions for first/last day-of-week in month/year
+	  - some variables renamed in the process of writing documentation
+
+	* demo/RcppBDT.R: updated to keep in sync with other changes
+
+2011-01-06  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/RcppBDT.h: Added paragraph about the UseWithString
+	variable with governs whether input/output functionality is loaded
+	which then requires linking with the Boost Date_Time library. Default
+	is just templates and no input/output given just basic date conversion
+	but no parsing from or formatting to string.
+
+	* DESCRIPTION: Expanded Description, mentioned optional linking of
+	Boost library to get string to/from date conversion functionality
+
+2011-01-05  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/RcppBDT.cpp: Expose new functions to compute IMM date (third
+	Wednesday) and the more general 'nth day of mth week'
+
+	* R/bdt.R: Expose two new functions getIMMDate() and its generalisation
+	getNthDayOfMthWeek()
+
+	* demo/RcppBDT.R: Also added to demo
+
+2011-01-04  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/bdt.R: Added a few accessor functions for R
+
+	* src/RcppBDT.cpp: Added fromDate() setter
+
+	* R/zzz.R: Make both date module and a class global
+	* demo/RcppBDT.R: Adapted demo accordingly
+
+2011-01-03  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/Makevars.win: Added -I$(BOOSTLIB)
+
+2011-01-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/RcppBDT.cpp: Modified modules wrapper name to make it clearer
+	which function set and which functions get or convert data
+
+	* tests/RcppBDT.R: Define simplest test of just calling demo()
+
+	* inst/include/RcppBDT.h: Defined compile-time variable to allow use
+	of string functions; when not defined we use only pure C++ template
+	and do not need to link against the C++ library from Boost Date.Time
+	* src/RcppBDT.cpp: Make parts of code depend upon new compile variable
+	* src/Makevars: No longer link with -lboost_date_time
+	* demo/RcppBDT.R: Comment-out two string-using functions
+
+2011-01-01  Dirk Eddelbuettel  <edd@debian.org>
+
+	* demo/RcppBDT.R: Added RcppBDT demo showing a few functions
+
+2010-12-24  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Added a few more functions
+
+	* DESCRIPTION: Set up as a simple package
+
+2010-12-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* Some first exploration with Rcpp modules around Boost Date.Time
+	using only inline
