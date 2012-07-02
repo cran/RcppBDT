@@ -1,3 +1,32 @@
+2012-07-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Version 0.2.0
+
+	* inst/NEWS.Rd, inst/NEWS: Added
+
+2012-06-30  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/zzz.R: Updated for R 2.15.1 using loadModule() and evalqOnLoad()
+
+	* src/RcppBDT.cpp (RCPP_MODULE): Expose the module class as 'bdtDate'
+	* R/zzz.R: Updated accordingly
+	* man/bdt.Rd: Updated accordingly
+
+	* man/bdt.Rd: Added two required alias'es flagged by R CMD check
+
+2012-04-11  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/include/RcppBDT.h, src/RcppBDT.cpp: prefix local #define
+	variable with RcppBDT_ to avoid any possible clashes
+
+	* inst/include/RcppBDT.h, src/RcppBDT.cpp: remove exception
+	specifications in partial specializations for as and wrap
+
+2012-03-30  Romain Francois  <romain@r-enthusiasts.com>
+
+	* R/zzz.R, RcppBDT.cpp, NAMESPACE, DESCRIPTION: update module
+	initialization
+
 2011-01-17  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version): bumped to 0.1.0 for first CRAN upload

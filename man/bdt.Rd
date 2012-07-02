@@ -1,8 +1,10 @@
 \name{bdt}
 \alias{bdt}
 \alias{bdtMod}
-\alias{print,Rcpp_date-method}
-\alias{format,Rcpp_date-method}
+\alias{show,Rcpp_bdtDate-method}
+\alias{format,Rcpp_bdtDate-method}
+\alias{bdtDate}
+\alias{Rcpp_bdtDate-class}
 \docType{package}
 \title{Default object for RcppBDT Boost Date_Time binding}
 \description{
@@ -11,14 +13,14 @@
 
   The \verb{bdtMod} variable is an instance of the class created by Rcpp
   modules. It currently contains just the \code{date} class; see
-  \code{print(bdtMod$date)} for its available methods. 
+  \code{print(date)} for its available methods. 
   
   New instances can be created using either the default constructor
-  (without argument) or the constructor using year, month, date arguments.
+  (without arguments) or the constructor using year, month, date arguments.
 }
 \section{Method}{
   \describe{
-    \item{print}{\code{signature(x = "Rcpp_date")}: prints a (BDT) date class object}
+    \item{show}{\code{signature(x = "Rcpp_date")}: prints a (BDT) date class object}
     \item{format}{\code{signature(x = "Rcpp_date")}: formats a (BDT) date class object}
   }
 }

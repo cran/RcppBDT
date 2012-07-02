@@ -1,8 +1,8 @@
-// -*- mode: C++; c-indent-level: 4; c-basic-offset: 4; tab-width: 8 -*-
+// -*- mode: C++; c-indent-level: 4; c-basic-offset: 4; indent-tabs-mode: nil; -*-
 //
 // RcppBDT.cpp: Rcpp and Boost Date_Time glue
 //
-// Copyright (C) 2010 - 2011 Dirk Eddelbuettel and Romain Francois
+// Copyright (C) 2010 - 2012 Dirk Eddelbuettel and Romain Francois
 //
 // This file is part of RcppBDT.
 //
@@ -23,18 +23,18 @@
 
 // define template specialisations for as and wrap
 namespace Rcpp {
-    template <> boost::gregorian::date as( SEXP dtsexp ) throw(not_compatible) {
+    template <> boost::gregorian::date as( SEXP dtsexp ) {
         Rcpp::Date dt(dtsexp);
         return boost::gregorian::date(dt.getYear(), dt.getMonth(), dt.getDay());
     }
 
-    template <> SEXP wrap(const boost::gregorian::date &d) throw(not_compatible) {
+    template <> SEXP wrap(const boost::gregorian::date &d) {
         boost::gregorian::date::ymd_type ymd = d.year_month_day();     // convert to y/m/d struct
         return Rcpp::wrap(Rcpp::Date( ymd.year, ymd.month, ymd.day ));
     }
 }
 
-#if UseWithStrings
+#if RcppBDT_UseWithStrings
     void date_print(boost::gregorian::date *d) {
 	std::cout << *d << std::endl;
     }
@@ -68,7 +68,7 @@ int date_day(boost::gregorian::date *d) { return static_cast<int>( d->day() ); }
 int date_dayofweek(boost::gregorian::date *d) { return static_cast<int>( d->day_of_week() ); }
 int date_dayofyear(boost::gregorian::date *d) { return static_cast<int>( d->day_of_year() ); }
 
-#if UseWithStrings
+#if RcppBDT_UseWithStrings
     // these extract the requested date portion or representation as an integer
     std::string date_toString(boost::gregorian::date *d) { return boost::gregorian::to_simple_string(*d); }
     std::string date_toIsoString(boost::gregorian::date *d) { return boost::gregorian::to_iso_string(*d); }
@@ -141,19 +141,19 @@ Rcpp::Date Date_lastDayOfWeekBefore(boost::gregorian::date *d, int weekday, SEXP
     return Rcpp::wrap(fdab.get_date(dt));
 }
 
-RCPP_MODULE(bdt) {
+RCPP_MODULE(bdtMod) {
 
     using namespace boost::gregorian;
     using namespace Rcpp;
 
-    // exposing a class (boost::gregorian::)date as "date" on the R side
-    class_<date>("date")
+    // exposing a class (boost::gregorian::)date as "bdtDate" on the R side
+    class_<date>("bdtDate")
 	
     // constructors
     .constructor("default constructor")
     .constructor<int, int, int>("constructor from year, month, day")
 
-    #if UseWithStrings
+    #if RcppBDT_UseWithStrings
         // free functions defined above with date* as first argument
         .method("fromString", &date_fromString, "create a date from a delimited string")
         .method("fromUndelString", &date_fromUndelString, "create a date from an un delimited string")
@@ -174,7 +174,7 @@ RCPP_MODULE(bdt) {
     .method("getDayOfWeek", &date_dayofweek, "returns the day of the week")
     .method("getDayOfYear", &date_dayofyear, "returns the day of the year")
 
-    #if UseWithStrings
+    #if RcppBDT_UseWithStrings
         .method("getString", &date_toString, "returns a string representation")
         .method("getIsoString", &date_toIsoString, "returns an ISO string representation")
         .method("getExtIsoString", &date_toExtIsoString, "returns an extended ISO string representation")

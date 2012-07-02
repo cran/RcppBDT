@@ -1,7 +1,7 @@
 ##
 ## zzz.R: Loading Rcpp and Boost Date_Time glue
 ##
-## Copyright (C) 2010 - 2011 Dirk Eddelbuettel and Romain Francois
+## Copyright (C) 2010 - 2012 Dirk Eddelbuettel and Romain Francois
 ##
 ## This file is part of RcppBDT.
 ##
@@ -18,31 +18,34 @@
 ## You should have received a copy of the GNU General Public License
 ## along with RcppBDT.  If not, see <http://www.gnu.org/licenses/>.
 
-## This and the code below in onLoad() owe some gratitude to
-## the wls package inside the Rcpp repository on R-forge
-##
-## grab the namespace of this package for use below
-.NAMESPACE <- environment()
 
-# dummy module, will be replaced later
-bdt <- new( "Module" )
+## .onLoad <- function (lib, pkg) {
+##     req <- get(paste("req", "uire", sep=""))	# we already Imports: methods, but there may
+##     req("methods")  	        		# be a race condition lurking
+##     loadRcppModules(direct=FALSE)
 
-.onLoad <- function (lib, pack) {
-
-    ## we need the methods package
-    require(methods, quiet=TRUE, warn=FALSE)
-
-    unlockBinding("bdt", .NAMESPACE)    	# unlock
-    bdtMod <- Module( "bdt" )			# get the module code
-    bdt <- new( bdtMod$date )                  	# date class default constructor for reference instance
-    bdt$setFromUTC()                    	# but set a default value
-    assign("bdt", bdt, .NAMESPACE)      	# assign the reference instance
-    assign("bdtMod", bdtMod, .NAMESPACE)  	# and the module
-
-    setMethod("print", "Rcpp_date", function(x, ...) print(x$getDate(), ...))
-    setMethod("format", "Rcpp_date", function(x, ...) format(x$getDate(), ...))
-
-    lockBinding( "bdt", .NAMESPACE)		# and lock
-}
+##     setMethod("show", "Rcpp_date", .show_date)
+##     setGeneric("format", function(x,...) standardGeneric("format") )
+##     setMethod("format", "Rcpp_date", .format_date )
+## }
 
 
+loadModule("bdtMod", TRUE)
+
+## create a variable 'bdt' from out bdtMod Module
+## this variable is used as a package-global instance
+delayedAssign( "bdt", local( {
+    x <- new( bdtDate )
+    x$setFromUTC()
+    x
+}) )
+
+.format_date <- function(x, ...) format(x$getDate(), ...)
+.show_date <- function(object) print(object$getDate())
+
+## define an onLoad expression to set some methods
+evalqOnLoad({
+    setMethod("show", "Rcpp_bdtDate", .show_date)
+    setGeneric("format", function(x,...) standardGeneric("format") )
+    setMethod("format", "Rcpp_bdtDate", .format_date )
+})
