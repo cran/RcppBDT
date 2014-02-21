@@ -1,4 +1,17 @@
+2014-02-21  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Version 0.2.2
+
+	* This version provides a minimal update to comply with CRAN changes
+	leading up to R release 3.1.0
+	* Once R 3.1.0 is out, we can release the newer version of the
+	package which (at least currently, and on Windows) needs long long
+	int support which is provided by the C++11 standard available for use
+	with R in release 3.1.0 or later
+
 2012-08-08  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Version 0.2.1
 
 	* R/bdt.R (getEndOfBizWeek,getEndOfMonth): Add call to fromDate() to
   	pass the argument to the bdt instance
