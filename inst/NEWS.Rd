@@ -1,6 +1,29 @@
 \name{NEWS}
 \title{News for Package \pkg{RcppBDT}}
-\newcommand{\cpkg}{\href{http://CRAN.R-project.org/package=#1}{\pkg{#1}}}
+
+\section{Changes in version 0.2.4 (2021-08-15)}{
+  \itemize{
+    \item New utility function \code{toPOSIXct} which can take multitple
+    input format (integer, floating point or character) vectors and can
+    convert by relying on a wide variety of standard formats. This
+    predates what has long been split off into a new package
+    \CRANpkg{anytime} which is more functional and feaureful.
+    \item New demo 'toPOSIXct' illustrating the feaure.
+    \item New demo 'toPOSIXctTiming' benchmarking it.
+    \item Documentation for new functions was added as well.
+    \item CI now uses \code{run.sh} from
+    \href{https://eddelbuettel.github.io/r-ci/}{r-ci}.
+    \item Functions \code{getLastDayOfWeekInMonth} and
+    \code{getFirstDayOfWeekInMonth} now use \code{dow} argument.
+    \item The shared library is now registered when loaded from
+    \code{NAMESPACE}.
+    \item C level entry points are now registered as R now recommends.
+    \item Several badges were added to the README.md file.
+    \item Several fields were added to the DESCRIPTION file, and/or updated.
+    \item Documentation URLs where both updated as needed and converted
+    to https.
+  }
+}
 
 \section{Changes in version 0.2.3 (2014-04-13)}{
   \itemize{
@@ -25,7 +48,7 @@
   \itemize{
     \item Updates to current CRAN Policy standards for \code{Depends:}
     and \code{Imports:} in DESCRIPTION
-    \item Also take advantage of new \cpkg{Rcpp} 0.11.0 build options
+    \item Also take advantage of new \CRANpkg{Rcpp} 0.11.0 build options
     \item New code remains in GitHub repo master branch until R 3.1.0 is
     released so that we can use C++11 in order to get the \code{long long
       int} support without which the package does not build on Windows

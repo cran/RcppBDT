@@ -1,17 +1,27 @@
+
 ## RcppBDT: R bindings for Boost Date.Time
 
 [![Build Status](https://travis-ci.org/eddelbuettel/rcppbdt.png)](https://travis-ci.org/eddelbuettel/rcppbdt)
+[![CI](https://github.com/eddelbuettel/rcppbdt/workflows/ci/badge.svg)](https://github.com/eddelbuettel/rcppbdt/actions?query=workflow%3Aci)
+[![License](https://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](https://www.gnu.org/licenses/gpl-2.0.html)
+[![CRAN](https://www.r-pkg.org/badges/version/RcppBDT)](https://cran.r-project.org/package=RcppBDT)
+[![Downloads](https://cranlogs.r-pkg.org/badges/RcppBDT?color=brightgreen)](https://www.r-pkg.org/pkg/RcppBDT)
+[![Last Commit](https://img.shields.io/github/last-commit/eddelbuettel/rcppbdt)](https://github.com/eddelbuettel/rcppbdt)
 
-This package provides R with access to 
-[Boost Date_Time](http://www.boost.org/doc/libs/1_55_0/doc/html/date_time.html)
-functionality by using Rcpp modules. 
+### About
 
-### Core Features available via [Boost Date_Time](http://www.boost.org/doc/libs/1_55_0/doc/html/date_time.html) 
+This package provides R with access to [Boost
+Date_Time](https://www.boost.org/doc/libs/release/doc/html/date_time.html)
+functionality by using Rcpp modules.
 
-* [Posix time ("Ptime")](http://www.boost.org/doc/libs/1_55_0/doc/html/date_time/posix_time.html): Nano-second precision calculations and datetime calculations
-* [Date](http://www.boost.org/doc/libs/1_55_0/doc/html/date_time/gregorian.html): basic date calculation support 
-* [Date duration](http://www.boost.org/doc/libs/1_55_0/doc/html/date_time/gregorian.html#date_time.gregorian.date_duration): Calculations on intervals ("days") 
-* [Local time](http://www.boost.org/doc/libs/1_55_0/doc/html/date_time/local_time.html): Portable time zone support
+It is effectively a precursor to the newer and more polished packages [anytime](https://github.com/eddelbuettel/anytime).
+
+### Core Features available via [Boost Date_Time](https://www.boost.org/doc/libs/release/doc/html/date_time.html) 
+
+* [Posix time ("Ptime")](https://www.boost.org/doc/libs/release/doc/html/date_time/posix_time.html): Nano-second precision calculations and datetime calculations
+* [Date](https://www.boost.org/doc/libs/release/doc/html/date_time/gregorian.html): basic date calculation support 
+* [Date duration](https://www.boost.org/doc/libs/release/doc/html/date_time/gregorian.html#date_time.gregorian.date_duration): Calculations on intervals ("days") 
+* [Local time](https://www.boost.org/doc/libs/release/doc/html/date_time/local_time.html): Portable time zone support
 
 Each of these has an individual demo file.
 
@@ -25,8 +35,10 @@ platforms.
 
 All calculations work as implemented, but the package still has a "proof of
 concept" flavour as they are not vectorised at the R level. All the relevant operators
-would have to be defined. That is mostly tedious which I have not gotten
-around to yet.  Get in touch if you are interested.
+operators would have to be defined. That is mostly tedious which is one of
+the reasons I have not gotten around to it yet.  Get in touch if you are
+interested.
+
 
 ### License
 
