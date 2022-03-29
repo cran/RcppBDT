@@ -1,6 +1,15 @@
 \name{NEWS}
 \title{News for Package \pkg{RcppBDT}}
 
+\section{Changes in version 0.2.5 (2022-03-29)}{
+  \itemize{
+    \item Ensure consistent compilation by ensuring \code{RcppBDT.h} is
+    included in all files, this addresses an LTO/ODR issue
+    \item Correct one declaration in \code{init.c}
+    \item Minor additional cleanups
+  }
+}
+
 \section{Changes in version 0.2.4 (2021-08-15)}{
   \itemize{
     \item New utility function \code{toPOSIXct} which can take multitple
@@ -8,7 +17,7 @@
     convert by relying on a wide variety of standard formats. This
     predates what has long been split off into a new package
     \CRANpkg{anytime} which is more functional and feaureful.
-    \item New demo 'toPOSIXct' illustrating the feaure.
+    \item New demo 'toPOSIXct' illustrating the feature.
     \item New demo 'toPOSIXctTiming' benchmarking it.
     \item Documentation for new functions was added as well.
     \item CI now uses \code{run.sh} from
