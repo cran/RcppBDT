@@ -1,5 +1,5 @@
-56b6aa6e3d31cf78613b81f36283052c *ChangeLog
-282beb8de1b5364c07aa8ee33e517144 *DESCRIPTION
+fc0aad39dc5ee28aa65717f3d78e5be0 *ChangeLog
+6be75ecf11a98e538389aaab480a3ff2 *DESCRIPTION
 ee6a233ec472caba4d0c671ac2948564 *NAMESPACE
 3d8d9f33a34181ba8325737b12195a68 *R/RcppExports.R
 1f6af0c3c9ab0e56f9cff781c14faecd *R/bdt.R
@@ -15,7 +15,7 @@ ee6a233ec472caba4d0c671ac2948564 *NAMESPACE
 ce636c0b193e5ec1694cbfa32809da76 *demo/RcppBDTtz.R
 30d73ae494cd1f2b4118b5c8c93e93c0 *demo/toPOSIXct.R
 ed64fccce4e284fb7d2935b5bcb7b15b *demo/toPOSIXctTiming.R
-d9f2db42aae6d3f08856ace145920b30 *inst/NEWS.Rd
+cf6902555d320eb294194d6347ba5580 *inst/NEWS.Rd
 ecf21fe101fb9d82a379aff2bfc4fa36 *inst/extdata/README.md
 3ea7e0e1973afee2bad59b573e00dd3e *inst/extdata/date_time_zonespec.csv
 204bbd2b4f164e709c0dc5fc6d9ef5d5 *inst/include/RcppBDT.h
@@ -43,6 +43,6 @@ ddc8021f7f06ac9f5707d1e3aaba4700 *src/RcppBDTdt.cpp
 8ef0f7d42d3a381ada6c577468862bea *src/RcppBDTpt.cpp
 cc0dce0d5f8f14b43a7d5aa14836d5b1 *src/RcppBDTtz.cpp
 80a43ab76723b166adc0df26a979ff4e *src/RcppExports.cpp
-fa78085a258ebf4f4410b2a5ce213cc7 *src/init.c
+0fc64f7c23136823174fc86d2914496c *src/init.c
 2ebdbd9238809bdf39906fb967fe7518 *src/toPOSIXct.cpp
 0654e7a8e32114ee86d3aba203de0ee8 *tests/RcppBDT.R
